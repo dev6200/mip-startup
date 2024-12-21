@@ -1,5 +1,5 @@
 import express from "express";
-import SongController from "../../../../controllers/songs";
+import SongController from "../../../../songs/controllers";
 
 const songsRoutes = express.Router();
 
