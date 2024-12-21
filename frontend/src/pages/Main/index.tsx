@@ -1,6 +1,7 @@
 import Sidebar from "../../components/Sidebar";
 import useAuthStore from "../../store/useAuthStore";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
+import Songs from "./pages/Songs";
 
 const Main = () => {
   const token = useAuthStore((state) => state.token);
@@ -18,6 +19,7 @@ const Main = () => {
         <Routes>
           <Route path="/" element={<>Home</>} />
           <Route path="/mass" element={<>Masses</>} />
+          <Route path="/songs" element={<Songs />} />
         </Routes>
       </div>
     </div>

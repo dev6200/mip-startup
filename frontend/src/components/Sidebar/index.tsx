@@ -7,7 +7,7 @@ const Sidebar = () => {
       <div className="w-full space-y-4">
         <SidebarItem text="Home" path="/" />
         <SidebarItem text="Masses" path="/mass" />
-        <SidebarItem text="Events" path="/" />
+        <SidebarItem text="Songs" path="/songs" />
         <SidebarItem text="Repertoire" path="/" />
         <SidebarItem text="Settings" path="/" />
       </div>
