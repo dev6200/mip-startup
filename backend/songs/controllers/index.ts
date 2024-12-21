@@ -1,16 +1,23 @@
 import { Request, Response } from "express";
+import SongService from "../services";
 
-const getAllSongs = (req: Request, res: Response) => {
+const getAllSongs = async (req: Request, res: Response) => {
+  const allSongs = await SongService.getAllSongs();
+
+  console.log(allSongs);
+
   res.status(200).json({
-    songs: "Songs",
+    songs: allSongs,
   });
 };
 
-const getSong = (req: Request, res: Response) => {
+const getSong = async (req: Request, res: Response) => {
   const songId = req.params.songId;
 
+  const song = await SongService.getSongById(parseInt(songId, 10));
+
   res.status(200).json({
-    songs: "Songs",
+    song: song,
   });
 };
 
