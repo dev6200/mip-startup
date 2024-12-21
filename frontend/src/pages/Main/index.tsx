@@ -15,7 +15,7 @@ const Main = () => {
     <div className="h-dvh p-6 flex gap-5">
       <Sidebar />
 
-      <div className="p-5 h-full bg-blue-100 w-full">
+      <div className="p-5 h-full w-full">
         <Routes>
           <Route path="/" element={<>Home</>} />
           <Route path="/mass" element={<>Masses</>} />
