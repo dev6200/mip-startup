@@ -1,8 +1,15 @@
 FROM node:18-alpine
+
 WORKDIR /app
+
 COPY package*.json ./
 RUN npm install
+
 COPY . .
-RUN npm run build
-CMD ["node", "dist/index.js"]
-EXPOSE 5000
+
+# Add entrypoint script
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Default command
+CMD ["sh", "entrypoint.sh"]
