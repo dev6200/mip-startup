@@ -1,6 +1,13 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { FieldValues, useForm } from "react-hook-form";
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const loginSchema = z.object({
+  username: z.string().nonempty(),
+  password: z.string().nonempty(),
+});
 
 const Login = () => {
   const { login } = useAuth();
@@ -9,7 +16,7 @@ const Login = () => {
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({ resolver: zodResolver(loginSchema) });
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -45,6 +52,7 @@ const Login = () => {
               className="border rounded-lg p-3 w-full"
               placeholder="Username"
             />
+            {errors.username && <span>This field is required</span>}
           </div>
           <div className="flex flex-col gap-3 w-full">
             <label>Password </label>
@@ -53,6 +61,7 @@ const Login = () => {
               placeholder="Password"
               {...register("password")}
             />
+            {errors.password && <span>This field is required</span>}
           </div>
           <button
             className="bg-black w-full text-white p-4 rounded-xl"
