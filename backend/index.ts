@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import * as bcrypt from "bcryptjs";
 import * as jwt from "jsonwebtoken";
 import { expressjwt } from "express-jwt";
+import apiRoutes from "./api";
 
 dotenv.config();
 
@@ -66,15 +67,13 @@ app.get("/login", async (req, res, next) => {
   }
 });
 
-app.get(
+app.use(
   "/api",
   expressjwt({
     secret: JWT_SECRET,
     algorithms: ["HS256"],
   }),
-  (req, res) => {
-    res.send("Hello from the backend!");
-  }
+  apiRoutes
 );
 
 // Global Error Handler Middleware - catches all errors
