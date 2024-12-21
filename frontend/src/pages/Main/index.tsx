@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
+import Sidebar from "../../components/Sidebar";
 import useAuthStore from "../../store/useAuthStore";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 
-const Main = ({ children }: { children: ReactNode }) => {
+const Main = () => {
   const token = useAuthStore((state) => state.token);
   const location = useLocation();
 
@@ -10,7 +10,18 @@ const Main = ({ children }: { children: ReactNode }) => {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  return <>{children}</>;
+  return (
+    <div className="h-dvh p-6 flex gap-5">
+      <Sidebar />
+
+      <div className="p-5 h-full bg-blue-100 w-full">
+        <Routes>
+          <Route path="/" element={<>Home</>} />
+          <Route path="/mass" element={<>Masses</>} />
+        </Routes>
+      </div>
+    </div>
+  );
 };
 
 export default Main;
