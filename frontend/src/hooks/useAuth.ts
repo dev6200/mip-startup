@@ -7,10 +7,16 @@ const useAuth = () => {
   const { setAuth, logout } = useAuthStore();
 
   const loginMutation = useMutation({
-    mutationFn: async ({ username }: { username: string }) => {
+    mutationFn: async ({
+      username,
+      password,
+    }: {
+      username: string;
+      password: string;
+    }) => {
       const response = await api.post("/login", {
-        username: "testuser",
-        password: "System123!",
+        username,
+        password,
       });
       return response.data;
     },
