@@ -1,3 +1,5 @@
+import { login } from "../../services/auth";
+
 const Login = () => (
   <div className="flex flex-col justify-center items-center h-full">
     <div className="flex flex-col justify-center items-center h-full space-y-4 w-1/4">
@@ -16,7 +18,16 @@ const Login = () => (
         <label>Password </label>
         <input className="border rounded-lg p-3" placeholder="Password" />
       </div>
-      <button className="bg-black w-full text-white p-4 rounded-xl">
+      <button
+        className="bg-black w-full text-white p-4 rounded-xl"
+        onClick={async () => {
+          console.log("Click");
+          login({
+            username: "testuser",
+            password: "System123!",
+          });
+        }}
+      >
         Log in
       </button>
     </div>

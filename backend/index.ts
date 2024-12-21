@@ -2,6 +2,7 @@ import express, { NextFunction } from "express";
 import dotenv from "dotenv";
 import * as bcrypt from "bcryptjs";
 import * as jwt from "jsonwebtoken";
+import cors from "cors";
 import { expressjwt } from "express-jwt";
 import apiRoutes from "./api/v1";
 
@@ -21,8 +22,9 @@ const users = [
 ];
 
 app.use(express.json());
+app.use(cors());
 
-app.get("/login", async (req, res, next) => {
+app.post("/login", async (req, res, next) => {
   try {
     const { username, password } = req.body;
 
