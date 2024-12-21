@@ -4,8 +4,6 @@ import SongService from "../services";
 const getAllSongs = async (req: Request, res: Response) => {
   const allSongs = await SongService.getAllSongs();
 
-  console.log(allSongs);
-
   res.status(200).json({
     songs: allSongs,
   });
@@ -30,8 +28,6 @@ const createNewSong = (req: Request, res: Response) => {
     sheetUrl,
     notes,
   } = req.body;
-
-  console.log(req.body);
 
   res.status(200).json({
     songs: "Songs",
