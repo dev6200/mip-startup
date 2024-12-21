@@ -6,6 +6,14 @@ const getAllSongs = (req: Request, res: Response) => {
   });
 };
 
+const getSong = (req: Request, res: Response) => {
+  const songId = req.params.songId;
+
+  res.status(200).json({
+    songs: "Songs",
+  });
+};
+
 const createNewSong = (req: Request, res: Response) => {
   const {
     title,
@@ -47,4 +55,10 @@ const deleteOneSong = (req: Request, res: Response) => {
   });
 };
 
-export default { createNewSong, deleteOneSong, updateOneSong, getAllSongs };
+export default {
+  createNewSong,
+  deleteOneSong,
+  updateOneSong,
+  getAllSongs,
+  getSong,
+};
