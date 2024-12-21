@@ -22,16 +22,6 @@ const users = [
 
 app.use(express.json());
 
-const authJWT = (req: Request, res: Response, next: NextFunction) => {
-  const token = req.headers.get("Authorization")?.split(" ")[1] || "";
-  try {
-    const decoded = jwt.verify(token, JWT_SECRET);
-    next();
-  } catch (err) {
-    res.status;
-  }
-};
-
 app.get("/login", async (req, res, next) => {
   try {
     const { username, password } = req.body;
