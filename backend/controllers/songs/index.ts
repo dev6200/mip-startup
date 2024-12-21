@@ -1,14 +1,12 @@
-import express from "express";
+import { Request, Response } from "express";
 
-const songsRoutes = express.Router();
-
-songsRoutes.get("/", (req, res) => {
+const getAllSongs = (req: Request, res: Response) => {
   res.status(200).json({
     songs: "Songs",
   });
-});
+};
 
-songsRoutes.post("/", (req, res) => {
+const createNewSong = (req: Request, res: Response) => {
   const {
     title,
     composer: { firstName, lastName },
@@ -23,9 +21,9 @@ songsRoutes.post("/", (req, res) => {
   res.status(200).json({
     songs: "Songs",
   });
-});
+};
 
-songsRoutes.put("/:songId", (req, res) => {
+const updateOneSong = (req: Request, res: Response) => {
   const songId = req.params.songId;
   const {
     title,
@@ -39,14 +37,14 @@ songsRoutes.put("/:songId", (req, res) => {
   res.status(200).json({
     songs: "Songs",
   });
-});
+};
 
-songsRoutes.delete("/:songId", (req, res) => {
+const deleteOneSong = (req: Request, res: Response) => {
   const songId = req.params.songId;
 
   res.status(200).json({
     songs: "Songs",
   });
-});
+};
 
-export default songsRoutes;
+export default { createNewSong, deleteOneSong, updateOneSong, getAllSongs };

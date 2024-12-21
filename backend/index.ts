@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import * as bcrypt from "bcryptjs";
 import * as jwt from "jsonwebtoken";
 import { expressjwt } from "express-jwt";
-import apiRoutes from "./api";
+import apiRoutes from "./api/v1";
 
 dotenv.config();
 
@@ -58,7 +58,7 @@ app.get("/login", async (req, res, next) => {
 });
 
 app.use(
-  "/api",
+  "/api/v1",
   expressjwt({
     secret: JWT_SECRET,
     algorithms: ["HS256"],
